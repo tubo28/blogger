@@ -37,11 +37,11 @@ class Article
   end
 
   def self.loadmeta(filepath)
-    state = :not_begin
+    state = :begin
     meta_lines = []
     File.open(filepath).each do |line|
       case state
-      when :not_begin
+      when :begin
         if line.strip == '---'
           state = :meta_info
         end
@@ -61,11 +61,11 @@ class Article
   end
 
   def self.loadmd(filepath)
-    state = :not_begin
+    state = :begin
     md_lines = []
     File.open(filepath).each do |line|
       case state
-      when :not_begin
+      when :begin
         if line.strip == '---'
           state = :meta_info
         end
