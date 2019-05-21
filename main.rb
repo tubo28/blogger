@@ -5,6 +5,9 @@ require 'pathname'
 require 'yaml'
 require_relative './kramdown_ext'
 
+# TODO: Filepath使う
+# ヘッダとかフッタとか
+
 class Article
   attr_accessor :title, :date, :author, :tags, :filepath
 
