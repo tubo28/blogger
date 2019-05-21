@@ -6,7 +6,8 @@ require 'yaml'
 require_relative './kramdown_ext'
 
 # TODO: Filepath使う
-# ヘッダとかフッタとか
+# TODO: ヘッダとかフッタとか
+# TODO: テスト
 
 class Article
   attr_accessor :title, :date, :author, :tags, :filepath
