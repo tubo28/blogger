@@ -1,0 +1,19 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    github-markup (3.0.4)
+    kramdown (2.1.0)
+    kramdown-parser-gfm (1.0.1)
+      kramdown (~> 2.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler
+  github-markup
+  kramdown
+  kramdown-parser-gfm
+
+BUNDLED WITH
+   1.17.2
