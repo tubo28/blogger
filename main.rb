@@ -1,30 +1,33 @@
 require 'optparse'
-require 'pathname'
 require_relative './markdown_loader'
 require_relative './article'
 
-# TODO: Filepath使う
 # TODO: ヘッダとかフッタとか
 # TODO: テスト
 
-args = {}
+def parse_argv
+  args = {}
 
-optparser = OptionParser.new do |opt|
-  opt.on('-i DIR', '--in', '記事があるディレクトリ', String) do |arg|
-    args[:in] = arg
+  optparser = OptionParser.new do |opt|
+    opt.on('-i DIR', '--in', '記事があるディレクトリ', String) do |arg|
+      args[:in] = arg
+    end
+    # TODO
+    # opt.on('-o DIR', '--out', 'HTMLが出力されるディレクトリ', String) do |arg|
+    #   args[:out] = arg
+    # end
   end
-  # TODO
-  # opt.on('-o DIR', '--out', 'HTMLが出力されるディレクトリ', String) do |arg|
-  #   args[:out] = arg
-  # end
+
+  begin
+    optparser.parse!
+  rescue OptionParser::ParseError => e
+    puts e
+    exit 1
+  end
+  args
 end
 
-begin
-  optparser.parse!
-rescue OptionParser::ParseError => e
-  puts e
-  exit 1
-end
+args = parse_argv
 
 inputdir = File.expand_path(args[:in])
 mdfiles = Dir.glob(File.join(inputdir, '*.md'))

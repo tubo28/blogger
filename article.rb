@@ -3,20 +3,10 @@ require 'pathname'
 class Article
   attr_accessor :title, :date, :author, :tags, :filepath
 
-  def initialize(attrs = {})
-    @title = attrs[:title]
-    @date = attrs[:date]
-    @author = attrs[:author]
-    @tags = attrs[:tags]
-    @filepath = attrs[:filepath]
-  end
-
   def self.from_file(filepath)
-    raise unless Pathname.new(filepath).absolute?
+    filepath = Pathname.new(filepath)
+    raise unless filepath.absolute?
 
-    article = Article.new
-
-    article.filepath = filepath
     meta = MarkdownLoader.load_meta(filepath)
 
     Article.new(
@@ -38,9 +28,17 @@ class Article
     )
   end
 
+  def outfilepath
+    @filepath.sub_ext('.html').to_s
+  end
+
   private
 
-  def outfilepath
-    Pathname.new(@filepath).sub_ext('.html').to_s
+  def initialize(attrs = {})
+    @title = attrs[:title]
+    @date = attrs[:date]
+    @author = attrs[:author]
+    @tags = attrs[:tags]
+    @filepath = attrs[:filepath]
   end
 end
