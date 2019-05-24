@@ -1,9 +1,6 @@
-require 'kramdown'
-require 'kramdown-parser-gfm'
 require 'optparse'
 require 'pathname'
-require 'yaml'
-require_relative './kramdown_ext'
+require_relative './markdown_loader'
 
 # TODO: Filepath使う
 # TODO: ヘッダとかフッタとか
@@ -12,21 +9,21 @@ require_relative './kramdown_ext'
 class Article
   attr_accessor :title, :date, :author, :tags, :filepath
 
-  def initialize(args = {})
-    @title = args[:title]
-    @date = args[:date]
-    @author = args[:author]
-    @tags = args[:tags]
-    @filepath = args[:filepath]
+  def initialize(attrs = {})
+    @title = attrs[:title]
+    @date = attrs[:date]
+    @author = attrs[:author]
+    @tags = attrs[:tags]
+    @filepath = attrs[:filepath]
   end
-  
+
   def self.from_file(filepath)
     raise unless Pathname.new(filepath).absolute?
 
     article = Article.new
 
     article.filepath = filepath
-    meta = Article.loadmeta(filepath)
+    meta = MarkdownLoader.load_meta(filepath)
 
     Article.new(
       title: meta['title'],
@@ -35,51 +32,6 @@ class Article
       tags: meta['tags'],
       filepath: filepath
     )
-  end
-
-  def self.loadmeta(filepath)
-    state = :begin
-    meta_lines = []
-    File.open(filepath).each do |line|
-      case state
-      when :begin
-        if line.strip == '---'
-          state = :meta_info
-        end
-      when :meta_info
-        if line.strip != '---'
-          meta_lines << line
-        else
-          state = :body
-          break
-        end
-      end
-    end
-
-    raise unless state == :body
-
-    YAML.load(meta_lines.join("\n"))
-  end
-
-  def self.loadmd(filepath)
-    state = :begin
-    md_lines = []
-    File.open(filepath).each do |line|
-      case state
-      when :begin
-        if line.strip == '---'
-          state = :meta_info
-        end
-      when :meta_info
-        if line.strip == '---'
-          state = :body
-        end
-      when :body
-        md_lines << line
-      end
-    end
-
-    md_lines.join("\n")
   end
 
   def outfilepath
@@ -91,7 +43,7 @@ class Article
     # open(filepath, 'w')
     io.print(
       Kramdown::Document.new(
-        Article.loadmd(filepath),
+        MarkdownLoader.load_body(filepath),
         input: 'MyKramdown'
       ).to_html
     )

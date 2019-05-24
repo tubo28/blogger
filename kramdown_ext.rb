@@ -6,7 +6,7 @@ class Kramdown::Parser::MyKramdown < Kramdown::Parser::Kramdown
   def initialize(source, options)
     super
     @span_parsers.unshift(:my_autolink)
-    @span_parsers.unshift(:ignore_shortcode)
+    # @span_parsers.unshift(:ignore_shortcode)
     @span_parsers.unshift(:ignore_latex_math)
   end
 
@@ -21,13 +21,13 @@ class Kramdown::Parser::MyKramdown < Kramdown::Parser::Kramdown
   end
   define_parser(:my_autolink, MY_AUTOLINK_START)
 
-  IGNORE_SHORTCODE = /{{<.*>}}/
-  # Parse {{< shortcode >}} and leave it raw string.
-  def parse_ignore_shortcode
-    @src.pos += @src.matched_size
-    @tree.children << Element.new(:raw, @src.matched)
-  end
-  define_parser(:ignore_shortcode, IGNORE_SHORTCODE)
+  # IGNORE_SHORTCODE = /{{<.*>}}/
+  # # Parse {{< shortcode >}} and leave it raw string.
+  # def parse_ignore_shortcode
+  #   @src.pos += @src.matched_size
+  #   @tree.children << Element.new(:raw, @src.matched)
+  # end
+  # define_parser(:ignore_shortcode, IGNORE_SHORTCODE)
 
   IGNORE_LATEX_MATH = /(?<!\\)((?<!\$)\${1,2}(?!\$))(.*?)(?<!\\)(?<!\$)\1(?!\$)/
   # Parse $latex math expression$ and leave it raw string.
