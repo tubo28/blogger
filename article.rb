@@ -1,7 +1,7 @@
 require 'pathname'
 
 class Article
-  attr_accessor :title, :date, :author, :tags, :filepath
+  attr_accessor :title, :time, :author, :tags, :filepath, :description
 
   def self.from_file(filepath)
     filepath = Pathname.new(filepath)
@@ -11,20 +11,11 @@ class Article
 
     Article.new(
       title: meta['title'],
-      date: meta['date'],
+      time: meta['time'],
       author: meta['author'],
+      description: 'hoge',
       tags: meta['tags'],
-      filepath: filepath
-    )
-  end
-
-  def render_to(io)
-    # alt: Kramdown::Document.new(File.open(md).read, input: 'GFM').to_html
-    io.print(
-      Kramdown::Document.new(
-        MarkdownLoader.load_body(filepath),
-        input: 'MyKramdown'
-      ).to_html
+      filepath: filepath,
     )
   end
 
@@ -32,12 +23,20 @@ class Article
     @filepath.sub_ext('.html').to_s
   end
 
+  def render_content
+    Kramdown::Document.new(
+      MarkdownLoader.load_body(filepath),
+      input: 'MyKramdown'
+    ).to_html
+  end
+
   private
 
   def initialize(attrs = {})
     @title = attrs[:title]
-    @date = attrs[:date]
+    @time = attrs[:time]
     @author = attrs[:author]
+    @description = attrs[:description]
     @tags = attrs[:tags]
     @filepath = attrs[:filepath]
   end

@@ -5,6 +5,11 @@ GEM
     kramdown (2.1.0)
     kramdown-parser-gfm (1.0.1)
       kramdown (~> 2.0)
+    slim (4.0.1)
+      temple (>= 0.7.6, < 0.9)
+      tilt (>= 2.0.6, < 2.1)
+    temple (0.8.1)
+    tilt (2.0.9)
 
 PLATFORMS
   ruby
@@ -14,6 +19,7 @@ DEPENDENCIES
   github-markup
   kramdown
   kramdown-parser-gfm
+  slim
 
 BUNDLED WITH
    1.17.2

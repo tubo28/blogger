@@ -1,0 +1,9 @@
+body
+  div#wrapper
+    div#content
+      div.post
+        h1.post-title =article.title
+        == article.render_content
+        div.post-footer
+          p ="Tags : #{article.tags.join(', ')}"
+          p ="最終更新 : #{article.time}"
