@@ -1,0 +1,202 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Yu Gothic UI","Meiryo UI","Meiryo","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","ＭＳ Ｐゴシック","Osaka",sans-serif;
+    background: #efefef;
+    line-height: 1.4;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0.7rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    text-decoration: underline;
+}
+
+h1.category-title {
+    background: #666;
+    color: #FCFCFC;
+    font-size: 1.7rem;
+    margin: 1rem 0;
+    padding: 0 13px;
+}
+h1.post-title {
+    font-size: 1.5rem;
+    border-left: 9px solid #777777;
+    border-bottom: 1px solid #777777;
+    padding-left: 12px;
+}
+h2 {
+    font-size: 1.2rem;
+    border-bottom: 1px dotted #777;
+    padding: 4px;
+    margin: 0.5rem 0;
+}
+h3 {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+h4 {
+    font-size: 1.0rem;
+    margin: 0.5rem 0;
+}
+
+.list a {
+    color: inherit;
+    text-decoration: none;
+    text-decoration: none;
+}
+.list a:focus, .list a:hover {
+    text-decoration: underline;
+}
+.undertitle {
+    padding-bottom: 0.5rem;
+}
+
+ul, ol {
+    margin-top: 0;
+}
+
+dl {
+    margin: 0.3em 0;
+    border: 0px solid #999;
+}
+
+dt {
+    border: 1px solid #999;
+    border-bottom-width: 0;
+    margin: -1px 0 0 0;
+    width : 100%;
+    font-weight: bold;
+    text-indent: 5px;
+    background-color: #ddd;
+}
+
+dd {
+    border: 1px solid #999;
+    padding: 2px 5px;
+    margin: 0;
+}
+
+abbr {
+    font-size: 85%;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+abbr[title] {
+    cursor: help;
+    border-bottom: 1px dotted #e5e5e5;
+}
+
+code, pre {
+    font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+pre {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    padding: 1rem;
+    border: 1px solid #999;
+    white-space: pre;
+    overflow: auto;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 0.5rem 0rem;
+}
+th {
+    background: #ddd;
+    vertical-align: center;
+    border: 1px solid #b9b9b9;
+    padding: 2px 1rem;
+}
+td {
+    border: 1px solid #b9b9b9;
+    padding: 2px 1rem;
+}
+
+#wrapper {
+    padding: 1rem 5rem 5rem;
+}
+
+#header {
+    padding: 1rem 0rem;
+}
+
+#footer {
+    padding: 0rem;
+}
+
+#content {
+    padding: 0
+}
+
+#header .title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+#header a, #footer a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.path-to-post {
+    font-size: 0.9rem;
+}
+
+.undertitle .tags a {
+    color: inherit;
+    font-size: 11px;
+    background: #FFF0FF none repeat scroll 0% 0%;
+    padding: 3px 10px;
+    white-space: nowrap;
+}
+.undertitle .categories a {
+    color: inherit;
+    font-size: 11px;
+    background: #E0FFE0 none repeat scroll 0% 0%;
+    padding: 3px 10px;
+    white-space: nowrap;
+}
+.undertitle .onlinejudges a {
+    color: inherit;
+    font-size: 11px;
+    background: #E0F0FF none repeat scroll 0% 0%;
+    padding: 3px 10px;
+    white-space: nowrap;
+}
+.post-footer {
+    text-align: right;
+}
+
+ul.list > li {
+    margin-bottom: 0.2em;
+}
+
+ul.list > li .new-mark {
+    color: #2a6bcc;
+}
+
+ul.list > li .codes {
+    color: #777777;
+    font-size: 0.8rem;
+}
+
+ul.list > li a .codes {
+    text-decoration: none;
+}
