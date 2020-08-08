@@ -2,9 +2,11 @@ GEM
   remote: https://rubygems.org/
   specs:
     github-markup (3.0.4)
-    kramdown (2.1.0)
+    kramdown (2.3.0)
+      rexml
     kramdown-parser-gfm (1.0.1)
       kramdown (~> 2.0)
+    rexml (3.2.4)
     slim (4.0.1)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
